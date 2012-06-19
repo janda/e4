@@ -35,8 +35,8 @@ public class TestClass {
 		HttpClient couchHttpClient = new StdHttpClient.Builder()
 		//.proxy("firewall")
 		//.proxyPort(80)
-		//.url("http://janda.iriscouch.com:80")
-		.url("http://localhost:5984")
+		.url("http://janda.iriscouch.com:80")
+		//.url("http://localhost:5984")
 		.build();
 		
 		CouchDbInstance dbInstance = new StdCouchDbInstance(couchHttpClient);
