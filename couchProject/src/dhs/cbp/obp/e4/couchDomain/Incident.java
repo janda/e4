@@ -1,28 +1,8 @@
 package dhs.cbp.obp.e4.couchDomain;
 
-import org.codehaus.jackson.annotate.JsonProperty;
+public class Incident extends CouchDbDocument {
 
-public class Incident {
-
-	@JsonProperty("_id")
-    private String id;
-
-    @JsonProperty("_rev")
-    private String revision;
-
-    private String eventNumber;
-    
-    private String title;   
-
-    private String type;
-    
-    public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
+    private String eventNumber, title;
 
 	public String getEventNumber() {
 		return eventNumber;
@@ -40,16 +20,4 @@ public class Incident {
 		this.title = title;
 	}
 
-	public void setId(String s) {
-        id = s;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public String getRevision() {
-        return revision;
-    }
-	
 }

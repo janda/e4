@@ -33,10 +33,10 @@ public class TestClass {
 	private void testMethod() throws Exception {
 				
 		HttpClient couchHttpClient = new StdHttpClient.Builder()
-		.proxy("firewall")
-		.proxyPort(80)
-		.url("http://janda.iriscouch.com:80")
-		//.url("http://localhost:5984")
+		//.proxy("firewall")
+		//.proxyPort(80)
+		//.url("http://janda.iriscouch.com:80")
+		.url("http://localhost:5984")
 		.build();
 		
 		CouchDbInstance dbInstance = new StdCouchDbInstance(couchHttpClient);
@@ -46,15 +46,27 @@ public class TestClass {
 			System.out.println("No database exists.");
 		}
 		
+		//Get all docs in this view and print them out.
 		ViewQuery query = new ViewQuery()
-        .designDocId("_design/all_incidents")
-        .viewName("All Incidents");
-        //.key("red");
+        .designDocId("_design/processing")
+        .viewName("all_incidents");
 		
 		List<Incident> incidents = db.queryView(query, Incident.class);
 		
 		for(Incident inc : incidents) {
 			System.out.println(inc.getEventNumber());
+		}
+		
+		//Use the same view but get only one document by key.
+		query = new ViewQuery()
+        .designDocId("_design/processing")
+        .viewName("all_incidents")
+        .key("IMB09090002");
+		
+		incidents = db.queryView(query, Incident.class);
+		
+		for(Incident inc : incidents) {
+			System.out.println(inc.getEventNumber() + " " + inc.getTitle());
 		}
 		
 	}
