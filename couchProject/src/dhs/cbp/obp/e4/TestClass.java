@@ -31,12 +31,15 @@ public class TestClass {
 	
 	
 	private void testMethod() throws Exception {
+				
+		HttpClient couchHttpClient = new StdHttpClient.Builder()
+		.proxy("firewall")
+		.proxyPort(80)
+		.url("http://janda.iriscouch.com:80")
+		//.url("http://localhost:5984")
+		.build();
 		
-		HttpClient httpClient = new StdHttpClient.Builder()
-        .url("http://localhost:5984")
-        .build();
-
-		CouchDbInstance dbInstance = new StdCouchDbInstance(httpClient);
+		CouchDbInstance dbInstance = new StdCouchDbInstance(couchHttpClient);
 		CouchDbConnector db = new StdCouchDbConnector("e4", dbInstance);
 
 		if(db == null) {
