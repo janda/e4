@@ -1,9 +1,13 @@
 package dhs.cbp.obp.e4.couchDomain;
 
 
-public class Civilian extends CouchDbDocument {
+public class Civilian extends BaseCouchDbDocument {
 	
 	private String lname, fname;
+	
+	public Civilian() {
+		this.setType("civilian");
+	}
 
 	public String getLname() {
 		return lname;

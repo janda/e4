@@ -11,9 +11,15 @@ import org.ektorp.impl.StdCouchDbConnector;
 import org.ektorp.impl.StdCouchDbInstance;
 
 import dhs.cbp.obp.e4.couchDomain.Incident;
+import dhs.cbp.obp.e4.couchDomain.Subject;
+import dhs.cbp.obp.e4.couchRepository.IncidentRepository;
 
 public class TestClass {
 
+	private CouchDbInstance dbInstance;
+	private CouchDbConnector db;
+	
+	
 	/**
 	 * @param args
 	 */
@@ -22,29 +28,85 @@ public class TestClass {
 		TestClass tc = new TestClass();
 		
 		try {
-			tc.testMethod();
+			
+			tc.setUpUrl("http://localhost:5984");
+			//tc.setUpUrl("http://janda.iriscouch.com:80");
+			//tc.setUpUrl("http://janda.iriscouch.com:80", "firewall", 80);
+			
+			//tc.testMethod();
+			
+			tc.createTestData();
+			
 		} catch(Exception e) {
 			System.out.println(e);
 		}
 
 	}
 	
+	private void createTestData() throws Exception {
+		
+		IncidentRepository rep = new IncidentRepository(db);
+		
+		Incident inc = new Incident();
+		
+		rep.add(inc);
+		
+		inc.setEventNumber("TEST1234");
+		inc.setTitle("Test title");
+		
+		String incidentId = inc.getId();
+		
+		Subject subject1 = new Subject();
+		subject1.setFname("Fname1");
+		subject1.setLname("Lname1");
+		subject1.setIncidentId(incidentId);
+		
+		Subject subject2 = new Subject();
+		subject2.setFname("Fname2");
+		subject2.setLname("Lname2");
+		subject2.setIncidentId(incidentId);
+		
+		rep.addSubject(subject1);
+		rep.addSubject(subject2);
+		
+		rep.update(inc);
+		
+	}
 	
-	private void testMethod() throws Exception {
-				
-		HttpClient couchHttpClient = new StdHttpClient.Builder()
-		//.proxy("firewall")
-		//.proxyPort(80)
-		.url("http://janda.iriscouch.com:80")
-		//.url("http://localhost:5984")
+	private void setUpUrl(String host) throws Exception {
+		
+		HttpClient couchHttpClient = new StdHttpClient.Builder()		
+		.url(host)
 		.build();
 		
-		CouchDbInstance dbInstance = new StdCouchDbInstance(couchHttpClient);
-		CouchDbConnector db = new StdCouchDbConnector("e4", dbInstance);
+		connectDb(couchHttpClient);
+		
+	}
+	
+	private void setUpUrl(String host, String proxy, Integer port) throws Exception {
+		
+		HttpClient couchHttpClient = new StdHttpClient.Builder()
+		.proxy("firewall")
+		.proxyPort(port.intValue())		
+		.url(host)
+		.build();
+		
+		connectDb(couchHttpClient);
+		
+	}
+	
+	private void connectDb(HttpClient couchHttpClient) {
+		
+		this.dbInstance = new StdCouchDbInstance(couchHttpClient);
+		this.db = new StdCouchDbConnector("e4", dbInstance);
 
 		if(db == null) {
 			System.out.println("No database exists.");
 		}
+		
+	}
+	
+	private void testMethod() throws Exception {				
 		
 		//Get all docs in this view and print them out.
 		ViewQuery query = new ViewQuery()
@@ -70,5 +132,7 @@ public class TestClass {
 		}
 		
 	}
+	
+	
 	
 }
