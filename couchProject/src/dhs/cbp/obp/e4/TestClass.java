@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.ektorp.CouchDbConnector;
 import org.ektorp.CouchDbInstance;
-import org.ektorp.ViewQuery;
 import org.ektorp.http.HttpClient;
 import org.ektorp.http.StdHttpClient;
 import org.ektorp.impl.StdCouchDbConnector;
@@ -13,6 +12,7 @@ import org.ektorp.impl.StdCouchDbInstance;
 import dhs.cbp.obp.e4.couchDomain.Incident;
 import dhs.cbp.obp.e4.couchDomain.Subject;
 import dhs.cbp.obp.e4.couchRepository.IncidentRepository;
+import dhs.cbp.obp.e4.couchRepository.SubjectRepository;
 
 public class TestClass {
 
@@ -33,9 +33,9 @@ public class TestClass {
 			//tc.setUpUrl("http://janda.iriscouch.com:80");
 			//tc.setUpUrl("http://janda.iriscouch.com:80", "firewall", 80);
 			
-			//tc.testMethod();
+			tc.testMethod();
 			
-			tc.createTestData();
+			//tc.createTestData();
 			
 		} catch(Exception e) {
 			System.out.println(e);
@@ -43,10 +43,22 @@ public class TestClass {
 
 	}
 	
+	private void getSubjectsInIncident(String incidentId) throws Exception {				
+		
+		SubjectRepository subjectRep = new SubjectRepository(db);
+		
+		List<Subject> list = subjectRep.getSubjectsInIncident(incidentId);
+						
+		for(Subject subject : list) {
+			System.out.println("Subject last name = " + subject.getLname());
+		}
+		
+	}
+	
 	private void createTestData() throws Exception {
 		
 		IncidentRepository rep = new IncidentRepository(db);
-		
+
 		Incident inc = new Incident();
 		
 		rep.add(inc);
@@ -108,31 +120,21 @@ public class TestClass {
 	
 	private void testMethod() throws Exception {				
 		
-		//Get all docs in this view and print them out.
-		ViewQuery query = new ViewQuery()
-        .designDocId("_design/processing")
-        .viewName("all_incidents");
+		IncidentRepository rep = new IncidentRepository(db);
 		
-		List<Incident> incidents = db.queryView(query, Incident.class);
+		List<Incident> incidents = rep.getAllIncidents(null);
 		
 		for(Incident inc : incidents) {
 			System.out.println(inc.getEventNumber());
+			getSubjectsInIncident(inc.getId());
 		}
 		
-		//Use the same view but get only one document by key.
-		query = new ViewQuery()
-        .designDocId("_design/processing")
-        .viewName("all_incidents")
-        .key("IMB09090002");
-		
-		incidents = db.queryView(query, Incident.class);
+		incidents = rep.getAllIncidents("IMB09090002");
 		
 		for(Incident inc : incidents) {
 			System.out.println(inc.getEventNumber() + " " + inc.getTitle());
 		}
 		
 	}
-	
-	
 	
 }

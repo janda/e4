@@ -1,5 +1,7 @@
 package dhs.cbp.obp.e4.couchRepository;
 
+import java.util.List;
+
 import org.ektorp.CouchDbConnector;
 import org.ektorp.support.CouchDbRepositorySupport;
 
@@ -12,6 +14,16 @@ public class IncidentRepository extends CouchDbRepositorySupport<Incident> {
         super(Incident.class, db);
 	}
 
+	public List<Incident> getAllIncidents(String incidentId) {
+		
+		if(incidentId == null) {
+			return queryView("all_incidents");
+		} else {
+			return queryView("all_incidents", incidentId);
+		}
+		
+	}
+	
 	public void addSubject(Subject subject) throws Exception {		
 		if(subject.getIncidentId() == null) {
 			//TODO: This is bad.
