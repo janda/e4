@@ -1,0 +1,47 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+	<title>Local Incident List</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
+	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+</head> 
+<body> 
+
+<form action="#" method="post">
+
+	<div data-role="fieldcontain">
+     <label for="foo">First Name:</label>
+     <input type="text" name="fname" id="foo" value=""/>
+	</div>
+	
+	<div data-role="fieldcontain">
+     <label for="foo">Last Name:</label>
+     <input type="text" name="lname" id="foo" value=""/>
+	</div>
+
+	<div data-role="fieldcontain">
+	<fieldset data-role="controlgroup">
+    	<legend>Gender:</legend>
+         	<input type="radio" name="gender" id="radio-female" value="f" />
+         	<label for="radio-female">Female</label>
+
+         	<input type="radio" name="gender" id="radio-male" value="m" />
+         	<label for="radio-male">Male</label>
+    </fieldset>
+    </div>
+
+	<div data-role="fieldcontain">
+		<label for="select-choice-x" class="select">Disposition</label>
+		<select name="select-shipper" id="select-choice-x">
+			<option></option>
+			<option value="vr">VR</option>
+			<option value="nta">NTA</option>
+			<option value="er">ER</option>
+		</select>
+	</div>
+</form>
+
+</body>
+</html>
