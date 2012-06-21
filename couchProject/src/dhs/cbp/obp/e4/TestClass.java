@@ -29,8 +29,8 @@ public class TestClass {
 		
 		try {
 			
-			tc.setUpUrl("http://localhost:5984");
-			//tc.setUpUrl("http://janda.iriscouch.com:80");
+			//tc.setUpUrl("http://localhost:5984");
+			tc.setUpUrl("http://janda.iriscouch.com:80");
 			//tc.setUpUrl("http://janda.iriscouch.com:80", "firewall", 80);
 			
 			tc.testMethod();
@@ -98,7 +98,7 @@ public class TestClass {
 	private void setUpUrl(String host, String proxy, Integer port) throws Exception {
 		
 		HttpClient couchHttpClient = new StdHttpClient.Builder()
-		.proxy("firewall")
+		.proxy(proxy)
 		.proxyPort(port.intValue())		
 		.url(host)
 		.build();
