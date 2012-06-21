@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+    	
+        <title>Jquery.ui.map - basic example</title>
+        
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />  
+		
+        <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.2.0/build/cssreset/reset-min.css" />
+        <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.2.0/build/cssbase/base-min.css" />
+		<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.2.0/build/cssfonts/fonts-min.css" />
+
+        <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/ui-lightness/jquery-ui.css" />	 
+        <link rel="stylesheet" type="text/css" href="http://jquery-ui-map.googlecode.com/svn-history/r64/trunk/demos/css/main.css" />
+        
+        <script src="http://www.google.com/jsapi?key=ABQIAAAAp3SStC2eaRzLMhLBZ1UcvRRhHLjSGuD1YyMRJjkEmJ33iXo9BxQ0oivi5mRZ5rWJQvx93vriLYeAOw" type="text/javascript"></script>        
+        <script type="text/javascript">
+		//<![CDATA[
+			google.load("maps", "3", {'other_params':'sensor=true'});
+			google.load("jquery", "1.4");
+			google.load("jqueryui", "1.8");
+		//]]>
+		</script>
+        <script type="text/javascript" src="http://jquery-ui-map.googlecode.com/svn-history/r64/trunk/ui/jquery.ui.map.min.js"></script>
+        
+        
+    </head>
+    <body>
+    
+    <script type="text/javascript">
+	//<![CDATA[
+	var geocoder;
+  var gmap;
+  var infowindow = new google.maps.InfoWindow();
+  var marker;
+			
+            $(document).ready(function() {
+				
+				$('#map_canvas').gmap({'center': getLatLng(), 'zoom': 12, 'callback': init});
+				function init() {
+					//$('#map_canvas').gmap('addMarker', {'position': getLatLng(), 'title': 'A title'});
+					$('#map_canvas').gmap('getCurrentPosition');
+					geocoder = new google.maps.Geocoder();
+
+
+				}
+				function getLatLng() {
+					if ( google.loader.ClientLocation != null ) {
+						return new google.maps.LatLng(google.loader.ClientLocation.latitude, google.loader.ClientLocation.longitude);	
+					}
+					return new google.maps.LatLng(59.3426606750, 18.0736160278);
+				}
+				
+				// placing position
+				google.maps.event.addListener($('#map_canvas').gmap('getMap'), 'click', function(event) {
+					alert(event.latLng);
+					//$('#map_canvas').gmap('clearMarkers');
+					
+					$('#map_canvas').gmap('addMarker', {'position': event.latLng, 'title': 'A title'}, function(map,marker){ 
+						google.maps.event.addListener(marker, 'dblclick', function() {						
+							//console.log(marker.getPosition());
+
+        				var pos = marker.getPosition().toString();
+        				var splitPos = pos.indexOf(', ');
+        				var posLat = pos.substring(1, splitPos);
+
+        				var posLng = pos.substring(splitPos + 2);
+        				posLng = posLng.substring(0, posLng.length - 1)
+
+        				var pLat = parseFloat(posLat);
+        				var pLng = parseFloat(posLng);
+
+        				//alert(posLat);
+
+        				$('#saveMarker').show();
+        				$('#lat').val(pLat.toFixed(6));
+        				$('#lng').val(pLng.toFixed(6));
+        				$('#geoTitle').val('');
+
+        				codeLatLng(pLat, pLng);
+
+        				marker.setMap(null); // removes the marker
+
+						});
+						
+					});
+					console.log('Lat: ' + event.latLng.xa);
+					console.log('Longit: ' + event.latLng.za);
+					
+					$('#lat').val(event.latLng.xa.toFixed(5));
+					$('#lng').val(event.latLng.za.toFixed(5));
+					
+					placeMarker(event.latLng);
+				});
+			
+				
+				
+            });
+			
+			  
+
+  function codeLatLng(lat, lng) {
+//    var input = document.getElementById("latlng").value;
+    //var latlngStr = mark.split(",",2);
+    //var lat = parseFloat(markLat);
+    //var lng = parseFloat(markLat);
+    var latlng = new google.maps.LatLng(lat, lng);
+    geocoder.geocode({'latLng': latlng}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        if (results[1]) {		
+			//console.log(results[1].address_components[results[1].address_components.length -2].long_name);
+          	//console.log(results[1].address_components[results[1].address_components.length -1].short_name);
+			
+			//console.log(results[1]);
+			
+			// get locality
+			//if (results[1].address_components[i].types != null && results[1].address_components[i].types.length == 2 ) {
+		var locality = '';
+		
+         for ( i=0; i<results[1].address_components.length; i++ ) {
+		 if (results[1].address_components[i].types[0] == "administrative_area_level_1") {
+          locality = results[1].address_components[i].long_name;
+         } 
+		 }
+		 
+		 if(locality.length != 0) { 
+			 $('#locality').val(locality);
+		 } else {
+		 	$('#locality').val('');
+		 }
+        //}
+			  
+			  // get country
+			  
+			  var country = '';
+			  for ( i=0; i<results[1].address_components.length; i++ ) {
+			   //if (results[1].address_components[i].short_name != null && results[1].address_components[i].short_name.length == 2 ) {
+				//$('#cc1').val(results[1].address_components[i].short_name);
+				if (results[1].address_components[i].types[0] == "country") {
+          			country = results[1].address_components[i].short_name;
+			   } 
+			  }
+			  
+			  if(country.length != 0) {
+					$('#cc1').val(country);  
+				} else {
+					$('#cc1').val('');
+					}
+			
+			//$('#cc1').val(results[1].address_components[results[1].address_components.length -1].short_name);
+			//$('#locality').val(results[1].address_components[results[1].address_components.length -2].long_name);
+			
+			//console.log(results[1].address_components);
+        }
+      } else {
+        alert("Geocoder failed due to: " + status);
+      }
+    });
+  }
+			
+			//]]>
+        </script>
+    	
+        <div id="map_canvas"></div>
+        <div id="saveMarker" style="display:block;">
+        <form>
+			Title: <input id="geoTitle" type="text" /><br />
+            Category: 
+            <select id="category">
+            	<option selected value=""> - pick a category - </option>
+                <option value="code">Name</option>
+            </select><br />
+            Country: <input type="text" id="cc1" /><br />
+            Locality: <input type="text" id="locality" /><br />
+            Latitude: <input type="text" id="lat" /><br />
+            Longitude: <input type="text" id="lng" />
+        </form>
+        </div>
+        
+        
+    </body>
+</html>
