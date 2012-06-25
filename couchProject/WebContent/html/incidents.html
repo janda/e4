@@ -6,21 +6,23 @@
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
 	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
-</head> 
-<body> 
+	<script src="../js/incidents.js"></script>	
+</head>
+<body>
 
-<div data-role="page">
+<div data-role="page" id="incidentListPage">
 
 	<div data-role="header">
 		<h1>Incidents</h1>
-	</div><!-- /header -->
+	</div>
 	
-	<ul data-role="listview" data-inset="true" data-filter="true" >
-	<li><a href="incidentForm.html">MUR1204000001 - Incident Title 1</a></li>
+	<div id="incidentListDiv"></div>
+	<!--<ul data-role="listview" data-inset="true" data-filter="true" id="incidentList">
+	<li><a href="incidentForm.html" data-prefetch>zz - Incident Title 1</a></li>
 	<li><a href="#">MUR1204000002 - Incident Title 2</a></li>
 	<li><a href="#">MUR1204000003 - Incident Title 3</a></li>
-	<li><a href="#">MUR1205000001 - Incident Title 4</a></li>
-	</ul>
+	<li><a href="#">MUR1205000001 - Incident Title 4</a></li> 
+	</ul> -->
 
 </div><!-- /page -->
 
