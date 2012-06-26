@@ -1,4 +1,6 @@
-
+/**
+ * Functions specific to incidents.html.
+ */
 $( document ).delegate("#incidentListPage", "pageinit", function() {
 	  		
 	$.getJSON('../jsp/test.jsp', function(data) {				
