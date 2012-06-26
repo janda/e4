@@ -1,74 +1,97 @@
-<!DOCTYPE html> 
-<html> 
-	<head> 
-	<title>Local Incident List</title> 
-	<meta name="viewport" content="width=device-width, initial-scale=1"> 
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
-	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-	<script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
-	
-	 <script>  
-        jQuery(window).ready(function(){  
-            jQuery("#btnInit").click(initiate_geolocation);  
-        });  
-  
-        function initiate_geolocation() {  
-            navigator.geolocation.getCurrentPosition(handle_geolocation_query,handle_errors);  
-        }  
-  
-        function handle_errors(error)  
-        {  
-            switch(error.code)  
-            {  
-                case error.PERMISSION_DENIED: alert("user did not share geolocation data");  
-                break;  
-  
-                case error.POSITION_UNAVAILABLE: alert("could not detect current position");  
-                break;  
-  
-                case error.TIMEOUT: alert("retrieving position timed out");  
-                break;  
-  
-                default: alert("unknown error");  
-                break;  
-            }  
-        }  
-  
-        function handle_geolocation_query(position){  
-                        
-            $('#lat').val(position.coords.latitude);
-            $('#lon').val(position.coords.longitude);
-            
-        }
-        
-    </script>  
-	
-</head> 
-<body> 
-		
-<form action="#" method="post">
-	
-	<div data-role="fieldcontain">
-     <label for="foo">Incident Title:</label>
-     <input type="text" name="name" id="foo" value=""/>
-	</div>
-	
-	<div data-role="fieldcontain">
-     <label for="lat">Lat:</label>
-     <input type="text" name="lat" id="lat" value=""/>
-	</div>
-	
-	<div data-role="fieldcontain">
-     <label for="lon">Lon:</label>
-     <input type="text" name="lon" id="lon" value=""/>
-	</div>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Incident</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="../js/jquery-mobile-1.1.0/jquery.mobile-1.1.0.min.css" />
+<script src="../js/jquery-1.7.1/jquery-1.7.1.min.js"></script>
+<script src="../js/jquery-mobile-1.1.0/jquery.mobile-1.1.0.min.js"></script>
 
-</form>
-	<div>
-		<button id="btnInit" onclick="initiate_geolocation();">Find my location</button>
-	</div>
-	<div>		
-		<a href="subjectForm.html" data-role="button" data-icon="star" data-prefetch>Add Subject</a>
+<script>
+	jQuery(window).ready(function() {
+		jQuery("#btnInit").click(initiate_geolocation);
+	});
+
+	function initiate_geolocation() {
+		navigator.geolocation.getCurrentPosition(handle_geolocation_query,
+				handle_errors);
+	}
+
+	function handle_errors(error) {
+		switch (error.code) {
+		case error.PERMISSION_DENIED:
+			alert("user did not share geolocation data");
+			break;
+
+		case error.POSITION_UNAVAILABLE:
+			alert("could not detect current position");
+			break;
+
+		case error.TIMEOUT:
+			alert("retrieving position timed out");
+			break;
+
+		default:
+			alert("unknown error");
+			break;
+		}
+	}
+
+	function handle_geolocation_query(position) {
+
+		$('#lat').val(position.coords.latitude);
+		$('#lon').val(position.coords.longitude);
+
+	}
+</script>
+
+</head>
+<body>
+	<div data-role="page" id="incidentListPage">
+
+		<div data-role="header">			
+			<a href="home.html" data-icon="delete">Cancel</a>
+			<h1>Event: 123456</h1>
+			<a href="#" data-icon="check" onclick="alert('Patience please.');">Save</a>
+			
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#" class="ui-btn-active">Event</a></li>
+					<li><a href="#" onclick="alert('Patience please.');">Subjects</a></li>
+				</ul>
+			</div><!-- /navbar -->
+
+		</div>
+
+		<div data-role="content">
+			<form action="#" method="post">
+
+				<div data-role="fieldcontain">
+					<label for="foo">Incident Title:</label> <input type="text"
+						name="name" id="foo" value="" />
+				</div>
+
+				<div data-role="fieldcontain">
+					<label for="lat">Lat:</label> <input type="text" name="lat"
+						id="lat" value="" />
+				</div>
+
+				<div data-role="fieldcontain">
+					<label for="lon">Lon:</label> <input type="text" name="lon"
+						id="lon" value="" />
+				</div>
+
+			</form>
+			<div>
+				<button id="btnInit" onclick="initiate_geolocation();">Find
+					my location</button>
+			</div>
+			<div>
+				<a href="subjectForm.html" data-role="button" data-icon="star"
+					data-prefetch>Add Subject</a>
+			</div>
+		</div>
 	</div>
 </body>
 </html>
