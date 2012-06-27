@@ -1,6 +1,11 @@
 /**
  * Functions specific to homePage.html.
  */
+
+
+//    localStorage - stores data with no expiration date
+//    sessionStorage - stores data for one session
+
 $( document ).delegate("#homePage", "pageinit", function() {
 	  		
 	//$.localStorage( 'foo', {data:'bar'} );
