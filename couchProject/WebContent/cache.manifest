@@ -1,6 +1,36 @@
 CACHE MANIFEST
-../js/jquery-1.7.1/jquery-1.7.1.min.js
-../js/jquery-mobile-1.1.0/jquery.mobile-1.1.0.min.js
-../js/application/home.js
-../js/application/constants.js	
-../js/jstorage/jstorage.min.js
+################################################################
+# Revision number change will force local application
+# cache to refresh when no other changes to this manifest
+# are found by the web server.
+# REV 2
+################################################################
+
+CACHE:
+
+########################
+#JavaScript files
+########################
+
+#Script libraries:
+js/jquery-1.7.1/jquery-1.7.1.min.js
+js/jquery-mobile-1.1.0/jquery.mobile-1.1.0.min.js
+js/jstorage/jstorage.min.js
+
+#Application scripts:
+js/application/home.js
+js/application/constants.js
+js/application/incidents.js	
+
+
+#CSS files
+js/jquery-mobile-1.1.0/jquery.mobile-1.1.0.min.css
+
+#HTML Files
+html/home.html
+html/incidents.html
+html/incidentForm.html
+html/subjectForm.html
+
+FALLBACK:
+/ html/offline_na.html

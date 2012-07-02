@@ -13,6 +13,7 @@ $( document ).delegate("#incidentListPage", "pageinit", function() {
 		//alert(i =") "+value);
 	}
 	$("#incidentListDiv").trigger('create');
+	
 	/*
 	$("#incidentListDiv").append('<ul data-role=\"listview\" data-inset=\"true\" data-filter=\"true\" id=\"incidentList\"></ul>');
 			$.each(incidents.incident, function(key, val) {

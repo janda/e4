@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html manifest="/cache.manifest">
+<html manifest="../cache.manifest">
 <head>
 <meta charset="ISO-8859-1">
 <title>Home Page</title>
@@ -17,7 +17,7 @@
 
 	<div data-role="page" id="homePage">
 
-	<div data-role="header">
+	<div data-role="header" data-id="header" data-position="fixed">
 		<h1>Home Page</h1>
 	</div>
 	
@@ -29,9 +29,11 @@
 		<a href="#" data-role="button" onclick="loadTestData();">Load New Test Data</a>
 	</div>
 
+	<div data-role="footer" data-id="footer" data-position="fixed">
+		<img src="#" id="statusIndicator" style="display:block;margin-left:auto;margin-right:auto"/>
+	</div>
 
 	</div><!-- /page -->
-	
 
 </body>
 </html>

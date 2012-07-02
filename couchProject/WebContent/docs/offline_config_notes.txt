@@ -1,0 +1,17 @@
+Notes for offline application.
+
+Web server must recognize the *.manifest file type.
+In Tomcat:
+<mime-mapping>
+    <extension>manifest</extension>
+    <mime-type>text/cache-manifest</mime-type>
+</mime-mapping> 
+
+Apache do this:
+ExpiresByType text/cache-manifest "access plus 0 seconds"
+
+ExpiresActive On
+ExpiresDefault "access"
+
+Put this in the .htaccess file:
+AddType text/cache-manifest .manifest

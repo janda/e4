@@ -7,6 +7,21 @@
 
 $( document ).delegate("#homePage", "pageinit", function() {		
 		
+	if(navigator.onLine) {
+		$("#statusIndicator").attr("src","../icons/online.png");
+	} else {
+		$("#statusIndicator").attr("src","../icons/offline.png");
+	}
+	
+	window.addEventListener("online", function() {
+		$("#statusIndicator").attr("src","../icons/online.png");
+	}, true);
+		 
+	window.addEventListener("offline", function() {
+		$("#statusIndicator").attr("src","../icons/offline.png");
+	}, true);
+	
+	
 	/* Native localStorage support.
 	localStorage.setItem("bar", "foo");	
 	var foo = localStorage.getItem("bar");	
@@ -30,8 +45,8 @@ $( document ).delegate("#homePage", "pageinit", function() {
 	  		
 });	
 
-function loadTestData() {
-	
+function loadTestData() {	
+		
 	/**
 	 * Array of all incidents.
 	 */
