@@ -1,8 +1,9 @@
 /**
  * Functions specific to incidents.html.
  */
-$( document ).delegate("#incidentListPage", "pageinit", function() {
-	
+//$( document ).delegate("#incidentListPage", "pageinit", function() {
+$("#incidentListPage").live("pageinit", function() {
+	alert("1");
 	var incidents = $.jStorage.get(INCIDENTS_LIST_KEY);	
 	var len=incidents.length;
 	
@@ -13,7 +14,8 @@ $( document ).delegate("#incidentListPage", "pageinit", function() {
 		//alert(i =") "+value);
 	}
 	$("#incidentListDiv").trigger('create');
-	
+	//$("#incidentListDiv").trigger('create');
+	alert("2");
 	/*
 	$("#incidentListDiv").append('<ul data-role=\"listview\" data-inset=\"true\" data-filter=\"true\" id=\"incidentList\"></ul>');
 			$.each(incidents.incident, function(key, val) {
