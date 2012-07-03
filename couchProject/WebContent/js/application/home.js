@@ -20,7 +20,7 @@ $( document ).delegate("#homePage", "pageinit", function() {
 	window.addEventListener("offline", function() {
 		$("#statusIndicator").attr("src","../icons/offline.png");
 	}, true);
-	
+
 	
 	/* Native localStorage support.
 	localStorage.setItem("bar", "foo");	
@@ -67,7 +67,5 @@ function loadTestData() {
 	incidents.push(incident1);
 	
 	$.jStorage.set(INCIDENTS_LIST_KEY, incidents);
-	
-	alert($.jStorage.get(INCIDENTS_LIST_KEY));
-	
+		
 }

@@ -3,10 +3,6 @@
 <head>
 <title>Incident</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="../js/jquery-mobile-1.1.0/jquery.mobile-1.1.0.min.css" />
-<script src="../js/jquery-1.7.1/jquery-1.7.1.min.js"></script>
-<script src="../js/jquery-mobile-1.1.0/jquery.mobile-1.1.0.min.js"></script>
 
 <script>
 	 jQuery(window).ready(function() {
@@ -48,11 +44,11 @@
 
 </head>
 <body>
-	<div data-role="page" id="incidentListPage">
+	<div data-role="page" id="incidentPage">
 
 		<div data-role="header">			
 			<a href="home.html" data-icon="delete">Cancel</a>
-			<h1>Event: 123456</h1>
+			<h1>Event: IMB0909000001</h1>
 			<a href="#" data-icon="check" onclick="alert('Patience please.');">Save</a>
 			
 			<div data-role="navbar">
@@ -68,21 +64,31 @@
 			<form action="#" method="post">
 
 				<div data-role="fieldcontain">
-					<label for="foo">Incident Title:</label> <input type="text"
-						name="name" id="foo" value="" />
+					<label for="foo">Incident Title:</label>
+					<input type="text" name="name" id="foo" value="" />
 				</div>
 
 				<div data-role="fieldcontain">
-					<label for="lat">Lat:</label> <input type="text" name="lat"
-						id="lat" value="" />
+					<label for="lat">Lat:</label>
+					<input type="text" name="lat" id="lat" value="" />
 				</div>
 
 				<div data-role="fieldcontain">
-					<label for="lon">Lon:</label> <input type="text" name="lon"
-						id="lon" value="" />
+					<label for="lon">Lon:</label>
+					<input type="text" name="lon" id="lon" value="" />
 				</div>
-
+				<div data-role="fieldcontain">
+					<label for="date">Arrest Date:</label>
+					<input name="date" id="date" value=""/>			
+				</div>
+				<div data-role="fieldcontain">
+					<label for="time">Arrest Time:</label>
+					<input name="time" id="time" value=""/>			
+				</div>
+				
 			</form>
+			
+			<!--
 			<div>
 				<button id="btnInit" onclick="initiate_geolocation();">Find
 					my location</button>
@@ -91,7 +97,18 @@
 				<a href="subjectForm.html" data-role="button" data-icon="star"
 					data-prefetch>Add Subject</a>
 			</div>
+			-->
 		</div>
+		<div data-role="footer" data-id="footer" data-position="fixed">
+		<div class="ui-grid-a">
+			<div class="ui-block-a">
+				<a href="home.html" data-role="button" data-icon="home">Home</a>
+			</div>
+			<div class="ui-block-b">
+				<img src="#" id="statusIndicator" align="right"/>
+			</div>
+		</div>		
+	</div><!-- /footer -->
 	</div>
 </body>
 </html>

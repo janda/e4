@@ -2,13 +2,7 @@
 <html manifest="../cache.manifest"> 
 	<head> 
 	<title>Event List</title> 
-	<meta name="viewport" content="width=device-width, initial-scale=1"> 
-	<link rel="stylesheet" href="../js/jquery-mobile-1.1.0/jquery.mobile-1.1.0.min.css" />
-	<script src="../js/jquery-1.7.1/jquery-1.7.1.min.js"></script>
-	<script src="../js/jquery-mobile-1.1.0/jquery.mobile-1.1.0.min.js"></script>
-	<script src="../js/jstorage/jstorage.min.js"></script>
-	<script src="../js/application/incidents.js"></script>
-	<script src="../js/application/constants.js"></script>	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 
@@ -21,15 +15,19 @@
 	<div data-role="content">
 	
 	<div id="incidentListDiv"></div>
-	<!--<ul data-role="listview" data-inset="true" data-filter="true" id="incidentList">
-	<li><a href="incidentForm.html" data-prefetch>zz - Incident Title 1</a></li>
-	<li><a href="#">MUR1204000002 - Incident Title 2</a></li>
-	<li><a href="#">MUR1204000003 - Incident Title 3</a></li>
-	<li><a href="#">MUR1205000001 - Incident Title 4</a></li> 
-	</ul> -->
-	
+		
 	</div>
 	
+	<div data-role="footer" data-id="footer" data-position="fixed">
+		<div class="ui-grid-a">
+			<div class="ui-block-a">
+				<a href="home.html" data-role="button" data-icon="home">Home</a>
+			</div>
+			<div class="ui-block-b">
+				<img src="#" id="statusIndicator" align="right"/>
+			</div>
+		</div>		
+	</div><!-- /footer -->
 </div><!-- /page -->
 
 </body>

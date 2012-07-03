@@ -22,7 +22,6 @@ js/application/home.js
 js/application/constants.js
 js/application/incidents.js	
 
-
 #CSS files
 js/jquery-mobile-1.1.0/jquery.mobile-1.1.0.min.css
 
@@ -31,6 +30,10 @@ html/home.html
 html/incidents.html
 html/incidentForm.html
 html/subjectForm.html
+
+#Icons
+icons/offline.png
+icons/online.png
 
 FALLBACK:
 / html/offline_na.html

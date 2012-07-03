@@ -3,9 +3,10 @@
  */
 //$( document ).delegate("#incidentListPage", "pageinit", function() {
 $("#incidentListPage").live("pageinit", function() {
-	alert("1");
+
 	var incidents = $.jStorage.get(INCIDENTS_LIST_KEY);	
-	var len=incidents.length;
+	var len=0;
+	if(incidents)len=incidents.length;
 	
 	$("#incidentListDiv").append('<ul data-role=\"listview\" data-inset=\"true\" data-filter=\"true\" id=\"incidentList\"></ul>');
 	for(var i=0; i<len; i++) {
@@ -15,7 +16,7 @@ $("#incidentListPage").live("pageinit", function() {
 	}
 	$("#incidentListDiv").trigger('create');
 	//$("#incidentListDiv").trigger('create');
-	alert("2");
+
 	/*
 	$("#incidentListDiv").append('<ul data-role=\"listview\" data-inset=\"true\" data-filter=\"true\" id=\"incidentList\"></ul>');
 			$.each(incidents.incident, function(key, val) {
