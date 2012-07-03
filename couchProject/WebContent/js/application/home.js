@@ -52,8 +52,9 @@ function loadTestData() {
 	 */
 	var incidents = new Array();
 	
-	var incident = new Object();
+	var incident = new Object();	
 	incident.type = "incident";
+	incident.incId = "1";
 	incident.eventNumber = "Testing1234";
 	incident.title = "Testing title";
 	
@@ -61,11 +62,12 @@ function loadTestData() {
 	
 	var incident1 = new Object();
 	incident1.type = "incident";
+	incident.incId = "2";
 	incident1.eventNumber = "Testing5678";
 	incident1.title = "Testing title again";
 	
 	incidents.push(incident1);
-	
+		
 	$.jStorage.set(INCIDENTS_LIST_KEY, incidents);
 		
 }

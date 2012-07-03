@@ -1,7 +1,6 @@
 /**
  * Functions specific to incidents.html.
  */
-//$( document ).delegate("#incidentListPage", "pageinit", function() {
 $("#incidentListPage").live("pageinit", function() {
 
 	var incidents = $.jStorage.get(INCIDENTS_LIST_KEY);	
@@ -9,13 +8,16 @@ $("#incidentListPage").live("pageinit", function() {
 	if(incidents)len=incidents.length;
 	
 	$("#incidentListDiv").append('<ul data-role=\"listview\" data-inset=\"true\" data-filter=\"true\" id=\"incidentList\"></ul>');
-	for(var i=0; i<len; i++) {
+	for(var i=0; i<len; i++) {	
+
 		var val = incidents[i].eventNumber;
-		$("#incidentList").append('<li><a href=\"incidentForm.html\">' + val + '</a></li>');
-		//alert(i =") "+value);
+		var incId = incidents[i].incId;
+
+		$("#incidentList").append('<li><a href=\"#\" onclick=\"goToIncident(' + incId + '\);">' + val + '</a></li>');		
+
 	}
 	$("#incidentListDiv").trigger('create');
-	//$("#incidentListDiv").trigger('create');
+	//$("#incidentListDiv").trigger('refresh'); //use this to append new elements to the listview
 
 	/*
 	$("#incidentListDiv").append('<ul data-role=\"listview\" data-inset=\"true\" data-filter=\"true\" id=\"incidentList\"></ul>');
@@ -34,3 +36,11 @@ $("#incidentListPage").live("pageinit", function() {
 	});				  		
 	  		*/
 });	  		
+
+function goToIncident(incidentId) {
+	
+	setCurrentIncidentByIncId();		
+	
+	$.mobile.changePage( "incidentForm.html");
+
+}
