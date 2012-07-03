@@ -3,7 +3,7 @@ CACHE MANIFEST
 # Revision number change will force local application
 # cache to refresh when no other changes to this manifest
 # are found by the web server.
-# REV 2
+# REV 1
 ################################################################
 
 CACHE:
@@ -16,6 +16,7 @@ CACHE:
 js/jquery-1.7.1/jquery-1.7.1.min.js
 js/jquery-mobile-1.1.0/jquery.mobile-1.1.0.min.js
 js/jstorage/jstorage.min.js
+js/knockout/knockout-2.1.0.js
 
 #Application scripts:
 js/application/home.js

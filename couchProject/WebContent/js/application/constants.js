@@ -9,6 +9,11 @@
  */
 var INCIDENTS_LIST_KEY = "INC_LIST_KEY";
 
+/**
+ * In-memory representation of all incidents.
+ */
+g_incidents = null;
+
 /** 
  * Current incident open for editing in the application.
  * @global

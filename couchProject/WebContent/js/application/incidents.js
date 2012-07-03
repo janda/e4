@@ -2,8 +2,25 @@
  * Functions specific to incidents.html.
  */
 $("#incidentListPage").live("pageinit", function() {
+	
+	g_incidents = $.jStorage.get(INCIDENTS_LIST_KEY);	
+	
+	/*var Incident = function(incId, eventNumber) {
+		this.incId = incId;
+		this.eventNumber = ko.observable(eventNumber);
+	};*/
 
-	var incidents = $.jStorage.get(INCIDENTS_LIST_KEY);	
+	var IncidentsViewModel = function(incidents) {
+	   var self = this;
+	   this.incidents = ko.observableArray(g_incidents);
+//	   this.addPerson = function() {
+//	       self.people.push(new Person(0, "new"));
+//	   };                        
+	};
+
+	ko.applyBindings(new IncidentsViewModel(g_incidents));
+
+	/*var incidents = $.jStorage.get(INCIDENTS_LIST_KEY);	
 	var len=0;
 	if(incidents)len=incidents.length;
 	
@@ -16,7 +33,7 @@ $("#incidentListPage").live("pageinit", function() {
 		$("#incidentList").append('<li><a href=\"#\" onclick=\"goToIncident(' + incId + '\);">' + val + '</a></li>');		
 
 	}
-	$("#incidentListDiv").trigger('create');
+	$("#incidentListDiv").trigger('create');*/
 	//$("#incidentListDiv").trigger('refresh'); //use this to append new elements to the listview
 
 	/*

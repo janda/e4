@@ -14,7 +14,11 @@
 	
 	<div data-role="content">
 	
-	<div id="incidentListDiv"></div>
+	<div id="incidentListDiv">
+		<ul data-role="listview" data-inset="true" data-filter="true" id="incidentList" data-bind="foreach: incidents">
+			<li><a href="#" onclick="goToIncident();" data-bind="text: eventNumber, attr: {id: incId}"></a></li>
+		</ul>
+	</div>
 		
 	</div>
 	

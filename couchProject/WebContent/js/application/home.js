@@ -62,7 +62,7 @@ function loadTestData() {
 	
 	var incident1 = new Object();
 	incident1.type = "incident";
-	incident.incId = "2";
+	incident1.incId = "2";
 	incident1.eventNumber = "Testing5678";
 	incident1.title = "Testing title again";
 	
