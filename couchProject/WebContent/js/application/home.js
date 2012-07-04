@@ -64,10 +64,24 @@ function createNewEvent() {
  */
 function Incident() {
 	this.type = "incident";
-	this.incId = "";
+	this.incId = uniqid();
 	this.eventNumber = "NEW_INC_1234";
 	this.title = "";
 }
+
+/**
+ * Generate a practically unique identifier.
+ * @returns {String}
+ */
+function uniqid() {
+	var newDate = new Date;
+	var partOne = newDate.getTime();
+	var partTwo = 1 + Math.floor((Math.random()*32767));
+	var partThree = 1 + Math.floor((Math.random()*32767));
+	var id = partOne + '-' + partTwo + '-' + partThree;
+	return id;
+}
+
 
 function loadTestData() {	
 		
