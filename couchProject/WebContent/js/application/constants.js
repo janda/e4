@@ -10,7 +10,8 @@
 var INCIDENTS_LIST_KEY = "INC_LIST_KEY";
 
 /**
- * In-memory representation of all incidents.
+ * In-memory representation of an array of all incidents.
+ * @global
  */
 g_incidents = null;
 
@@ -44,4 +45,20 @@ function findIncidentByIncId(incId) {
  */
 function setCurrentIncidentByIncId(incId) {
 	g_curIncident = findIncidentByIncId(incId);
+}
+
+/**
+ * Utility method to get the current incident.
+ * @returns current incident.
+ */
+function getCurrentIncident() {
+	return g_curIncident;
+}
+
+/**
+ * Utility method to set the current incident. 
+ * @param incident
+ */
+function setCurrentIncident(incident) {
+	g_curIncident = incident;
 }

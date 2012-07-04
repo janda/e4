@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html manifest="/cache.manifest">
 <head>
-<title>Incident</title>
+<title>Event Form</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
@@ -9,12 +9,12 @@
 
 		<div data-role="header">			
 			<a href="home.html" data-icon="delete">Cancel</a>
-			<h1>Event: IMB0909000001</h1>
+			<h1>Event: <span data-bind="text: eventNumber"></span></h1>
 			<a href="#" data-icon="check" onclick="alert('Patience please.');">Save</a>
 			
 			<div data-role="navbar">
 				<ul>
-					<li><a href="#" class="ui-btn-active">Event</a></li>
+					<li><a href="#" class="ui-btn-active">Event Info</a></li>
 					<li><a href="#" onclick="alert('Patience please.');">Subjects</a></li>
 				</ul>
 			</div><!-- /navbar -->
@@ -25,8 +25,8 @@
 			<form action="#" method="post">
 
 				<div data-role="fieldcontain">
-					<label for="foo">Incident Title:</label>
-					<input type="text" name="name" id="foo" value="" />
+					<label for="title">Incident Title:</label>
+					<input type="text" id="title" data-bind="value: eventTitle" />
 				</div>
 
 				<div data-role="fieldcontain">

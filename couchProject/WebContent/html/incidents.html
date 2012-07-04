@@ -16,7 +16,7 @@
 	
 	<div id="incidentListDiv">
 		<ul data-role="listview" data-inset="true" data-filter="true" id="incidentList" data-bind="foreach: incidents">
-			<li><a href="#" onclick="goToIncident();" data-bind="text: eventNumber, attr: {id: incId}"></a></li>
+			<li><a href="#" data-bind="text: eventNumber, click: $parent.goToIncident.bind($parent.incident)"></a></li>
 		</ul>
 	</div>
 		

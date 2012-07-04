@@ -21,7 +21,8 @@ js/knockout/knockout-2.1.0.js
 #Application scripts:
 js/application/home.js
 js/application/constants.js
-js/application/incidents.js	
+js/application/incidents.js
+js/application/incidentForm.js		
 
 #CSS files
 js/jquery-mobile-1.1.0/jquery.mobile-1.1.0.min.css
