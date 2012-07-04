@@ -13,7 +13,7 @@ var INCIDENTS_LIST_KEY = "INC_LIST_KEY";
  * In-memory representation of an array of all incidents.
  * @global
  */
-g_incidents = null;
+//g_incidents = null;
 
 /** 
  * Current incident open for editing in the application.
@@ -35,7 +35,8 @@ function findIncidentByIncId(incId) {
 		if(incId == incidents[i].incId) {
 			return incidents[i];
 		}
-	}	
+	}
+	return null; //no incident found
 }
 
 /**
@@ -61,4 +62,40 @@ function getCurrentIncident() {
  */
 function setCurrentIncident(incident) {
 	g_curIncident = incident;
+}
+
+/**
+ * Save the current incident to local storage.
+ * @param incident to save
+ */
+function saveCurIncident() {
+
+	if(!g_curIncident) return; //TODO: Thrown an exception here?
+	
+	var incidents = $.jStorage.get(INCIDENTS_LIST_KEY);	
+	var len=0;
+	if(incidents) {
+		len=incidents.length;
+	} else {
+		incidents = new Array();
+	}
+	
+	var incId = g_curIncident.incId;
+	
+	if(len != 0) {
+		//find and replace incident.
+		for(var i=0; i<len; i++) {	
+			if(incId == incidents[i].incId) {
+				incidents[i] = g_curIncident;
+				$.jStorage.set(INCIDENTS_LIST_KEY, incidents);
+				return;
+			}
+		}
+	}
+		
+	//add new incident.
+	incidents.push(g_curIncident);
+	$.jStorage.set(INCIDENTS_LIST_KEY, incidents);
+	return;
+	
 }

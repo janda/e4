@@ -2,20 +2,18 @@
  * Functions specific to incidents.html.
  */
 $("#incidentListPage").live("pageinit", function() {
-//$("#incidentListPage").live("pagebeforeshow", function() {	
-	g_incidents = $.jStorage.get(INCIDENTS_LIST_KEY);	
+
+	ko.applyBindings(new ViewModel(), this);
+
+});	  		
 
 	var ViewModel = function(incidents) {
 	   var self = this;
-	   this.incidents = ko.observableArray(g_incidents);
+	   this.incidents = ko.observableArray( $.jStorage.get(INCIDENTS_LIST_KEY) );
 	   
 	   self.goToIncident = function(incident) {
 		   setCurrentIncident(incident);
 		   $.mobile.changePage( "incidentForm.html");
-       };
-                     
+	   };
+                  
 	};
-
-	ko.applyBindings(new ViewModel(g_incidents), this);
-
-});	  		

@@ -7,10 +7,12 @@
 <body>
 	<div data-role="page" id="incidentPage">
 
-		<div data-role="header">			
-			<a href="home.html" data-icon="delete">Cancel</a>
-			<h1>Event: <span data-bind="text: eventNumber"></span></h1>
-			<a href="#" data-icon="check" onclick="alert('Patience please.');">Save</a>
+		<div data-role="header">
+					
+			<a href="incidents.html" data-icon="delete">Cancel</a>
+			<h1>Event</h1>
+			<!-- Maybe we have a refresh from server button? -->
+			<a href="#" data-icon="check" onclick="saveEvent();">Save</a>
 			
 			<div data-role="navbar">
 				<ul>
@@ -23,30 +25,29 @@
 
 		<div data-role="content">
 			<form action="#" method="post">
-
-				<div data-role="fieldcontain">
-					<label for="title">Incident Title:</label>
-					<input type="text" id="title" data-bind="value: eventTitle" />
-				</div>
-
-				<div data-role="fieldcontain">
-					<label for="lat">Lat:</label>
-					<input type="text" name="lat" id="lat" value="" />
-				</div>
-
-				<div data-role="fieldcontain">
-					<label for="lon">Lon:</label>
-					<input type="text" name="lon" id="lon" value="" />
+				<div style="margin-left:auto; margin-right:auto; font-weight: bold;">
+					<span style="text-align: center;" data-bind="text: eventNumber"></span>
 				</div>
 				<div data-role="fieldcontain">
-					<label for="date">Arrest Date:</label>
-					<input name="date" id="date" value=""/>			
+					<label for="title">Event Title:</label>
+					<input type="text" name="title" id="title" data-bind="value: eventTitle" />
 				</div>
 				<div data-role="fieldcontain">
-					<label for="time">Arrest Time:</label>
-					<input name="time" id="time" value=""/>			
+					<label for="arsLat">Lat:</label>
+					<input type="text" name="arsLat" id="arsLat" maxlength="10" data-bind="value: arsLat"/>
 				</div>
-				
+				<div data-role="fieldcontain">
+					<label for="arsLon">Lon:</label>
+					<input type="text" name="arsLon" id="arsLon" maxlength="10" data-bind="value: arsLon" />
+				</div>
+				<div data-role="fieldcontain">
+					<label for="arsDt">Arrest Date:</label>
+					<input type="date" name="arsDt" id="arsDt" maxlength="10" data-bind="value: arsDt"/>			
+				</div>
+				<div data-role="fieldcontain">
+					<label for="arsTm">Arrest Time:</label>
+					<input type="time" name="arsTm" id="arsTm" maxlength="4" data-bind="value: arsTm"/>			
+				</div>				
 			</form>
 			
 			<!--

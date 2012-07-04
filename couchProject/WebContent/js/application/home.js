@@ -45,6 +45,30 @@ $( document ).delegate("#homePage", "pageinit", function() {
 	  		
 });	
 
+/**
+ * Create an new event and move to the event
+ * page.
+ */
+function createNewEvent() {
+	
+	var incident = new Incident();
+			
+	setCurrentIncident(incident);
+	$.mobile.changePage( "incidentForm.html");
+	
+}
+
+/**
+ * Constructor for a new Incident object.
+ * @returns {Incident}
+ */
+function Incident() {
+	this.type = "incident";
+	this.incId = "";
+	this.eventNumber = "NEW_INC_1234";
+	this.title = "";
+}
+
 function loadTestData() {	
 		
 	/**
