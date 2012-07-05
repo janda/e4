@@ -7,17 +7,17 @@
 <body>
 	<div data-role="page" id="incidentPage">
 
-		<div data-role="header">
+		<div data-role="header" data-position="fixed">
 					
-			<a href="incidents.html" data-icon="delete">Cancel</a>
+			<a href="incidents.html" data-icon="back">Cancel</a>
 			<h1>Event</h1>
 			<!-- Maybe we have a refresh from server button? -->
 			<a href="#" data-icon="check" onclick="saveEvent();">Save</a>
 			
 			<div data-role="navbar">
 				<ul>
-					<li><a href="#" class="ui-btn-active">Event Info</a></li>
-					<li><a href="#" onclick="alert('Patience please.');">Subjects</a></li>
+					<li><a href="#" class="ui-btn-active" data-transition="slide">Event Info</a></li>
+					<li><a href="subjectForm.html" data-transition="slide" data-prefetch>Subjects</a></li>
 				</ul>
 			</div><!-- /navbar -->
 
@@ -67,7 +67,7 @@
 				<a href="home.html" data-role="button" data-icon="home">Home</a>
 			</div>
 			<div class="ui-block-b">
-				<img src="#" id="statusIndicator" align="right"/>
+				<img id="statusIndicator" align="right"/>
 			</div>
 		</div>		
 	</div><!-- /footer -->

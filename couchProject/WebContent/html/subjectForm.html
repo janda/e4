@@ -6,16 +6,38 @@
 	</head> 
 <body> 
 <div data-role="page" id="subjectPage">
+
+	<div data-role="header" data-position="fixed">
+					
+		<a href="incidents.html" data-icon="back">Cancel</a>			
+		<h1>Subjects</h1>				
+		<a href="#" data-icon="check" onclick="saveSubject();">Save</a>	
+			
+		<div data-role="navbar">
+			<ul>
+				<li><a href="incidentForm.html" data-transition="slide">Event Info</a></li>
+				<li><a href="#" class="ui-btn-active" data-transition="slide">Subjects</a></li>
+			</ul>
+		</div><!-- /navbar -->
+
+	</div>
+
 <form action="#" method="post">
 
+	<label for="select-choice-0" class="select">Subjects:</label>
+		<select name="subjects" id="subjects">
+   			<option value="standard">Standard: 7 day</option>
+   			<option value="rush">Rush: 3 days</option>
+		</select>
+
 	<div data-role="fieldcontain">
-     <label for="foo">First Name:</label>
-     <input type="text" name="fname" id="foo" value=""/>
+     <label for="fname">First Name:</label>
+     <input type="text" name="fname" id="fname"/>
 	</div>
 	
 	<div data-role="fieldcontain">
-     <label for="foo">Last Name:</label>
-     <input type="text" name="lname" id="foo" value=""/>
+     <label for="lname">Last Name:</label>
+     <input type="text" name="lname" id="lname"/>
 	</div>
 
 	<div data-role="fieldcontain">
@@ -28,17 +50,20 @@
          	<label for="radio-male">Male</label>
     </fieldset>
     </div>
-
-	<div data-role="fieldcontain">
-		<label for="select-choice-x" class="select">Disposition</label>
-		<select name="select-shipper" id="select-choice-x">
-			<option></option>
-			<option value="vr">VR</option>
-			<option value="nta">NTA</option>
-			<option value="er">ER</option>
-		</select>
-	</div>
 </form>
+	<div data-role="footer" data-id="footer" data-position="fixed">
+		<div class="ui-grid-a">
+			<div class="ui-block-a">
+				<a href="home.html" data-role="button" data-icon="home">Home</a>
+				<!-- 
+				<a href="#" data-icon="delete" onclick="alert('Not implemented yet.');">Delete</a>
+				 -->
+			</div>
+			<div class="ui-block-b">
+				<img id="statusIndicator" align="right"/>
+			</div>
+		</div>		
+	</div><!-- /footer -->
 </div>
 </body>
 </html>

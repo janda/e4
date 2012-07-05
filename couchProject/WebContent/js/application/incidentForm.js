@@ -12,6 +12,7 @@ $("#incidentPage").live("pageinit", function() {
 	 };
 	
 	ko.applyBindings(incidentFormViewModel,this);
+	setOnlineStatus();
 	
 });
 
@@ -24,5 +25,5 @@ function saveEvent() {
 	g_curIncident.title = $("#title").val();
 	
 	saveCurIncident();
-	
+	alert("Save Completed.");
 }

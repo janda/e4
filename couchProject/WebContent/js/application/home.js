@@ -7,41 +7,7 @@
 
 $( document ).delegate("#homePage", "pageinit", function() {		
 		
-	if(navigator.onLine) {
-		$("#statusIndicator").attr("src","../icons/online.png");
-	} else {
-		$("#statusIndicator").attr("src","../icons/offline.png");
-	}
-	
-	window.addEventListener("online", function() {
-		$("#statusIndicator").attr("src","../icons/online.png");
-	}, true);
-		 
-	window.addEventListener("offline", function() {
-		$("#statusIndicator").attr("src","../icons/offline.png");
-	}, true);
-
-	
-	/* Native localStorage support.
-	localStorage.setItem("bar", "foo");	
-	var foo = localStorage.getItem("bar");	
-	alert(foo);*/
-	
-	/* jstorage library support
-	var key = "key";
-	$.jStorage.set(key, "Testing");
-	var value = $.jStorage.get(key);
-	alert(value);
-	*/
-
-	
-	/*$.getJSON('../jsp/test.jsp', function(data) {				
-		$("#incidentListDiv").append('<ul data-role=\"listview\" data-inset=\"true\" data-filter=\"true\" id=\"incidentList\"></ul>');
-		$.each(data.rows, function(key, val) {
-			$("#incidentList").append('<li><a href=\"incidentForm.html\">' + val.key + '</a></li>');		
-		});		
-		$("#incidentListDiv").trigger('create');
-	});			*/	  		
+	setOnlineStatus();	
 	  		
 });	
 
@@ -82,7 +48,10 @@ function uniqid() {
 	return id;
 }
 
-
+/**
+ * Load dummy data into storage for testing
+ * or debugging.
+ */
 function loadTestData() {	
 		
 	/**

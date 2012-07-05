@@ -8,7 +8,7 @@
 
 <div data-role="page" id="incidentListPage">
 
-	<div data-role="header">
+	<div data-role="header" data-position="fixed">
 		<h1>Event List</h1>
 	</div>
 	
@@ -16,7 +16,9 @@
 	
 	<div id="incidentListDiv">
 		<ul data-role="listview" data-inset="true" data-filter="true" id="incidentList" data-bind="foreach: incidents">
-			<li><a href="#" data-bind="text: eventNumber, click: $parent.goToIncident.bind($parent.incident)"></a></li>
+			<li>
+				<a href="#" data-bind="text: eventNumber, click: $parent.goToIncident.bind($parent.incident)" data-transition="slide"></a>
+			</li>
 		</ul>
 	</div>
 		

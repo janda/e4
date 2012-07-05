@@ -99,3 +99,24 @@ function saveCurIncident() {
 	return;
 	
 }
+
+/**
+ * Select the correct icon to display based
+ * on the current online/offline status.
+ */
+function setOnlineStatus() {
+
+	if(navigator.onLine) {
+		$("#statusIndicator").attr("src","../icons/online.png");
+	} else {
+		$("#statusIndicator").attr("src","../icons/offline.png");
+	}
+	
+	/*window.addEventListener("online", function() {
+		$("#statusIndicator").attr("src","../icons/online.png");
+	}, true);
+		 
+	window.addEventListener("offline", function() {
+		$("#statusIndicator").attr("src","../icons/offline.png");
+	}, true);*/
+}

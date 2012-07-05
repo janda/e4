@@ -1,19 +1,20 @@
 /**
  * Functions specific to incidents.html.
  */
-$("#incidentListPage").live("pageinit", function() {
-
-	ko.applyBindings(new ViewModel(), this);
-
-});	  		
+$("#incidentListPage").live("pagebeforeshow", function() {
 
 	var ViewModel = function(incidents) {
-	   var self = this;
-	   this.incidents = ko.observableArray( $.jStorage.get(INCIDENTS_LIST_KEY) );
-	   
-	   self.goToIncident = function(incident) {
-		   setCurrentIncident(incident);
-		   $.mobile.changePage( "incidentForm.html");
-	   };
-                  
-	};
+		   var self = this;
+		   this.incidents = ko.observableArray( $.jStorage.get(INCIDENTS_LIST_KEY) );
+		   
+		   self.goToIncident = function(incident) {
+			   setCurrentIncident(incident);
+			   $.mobile.changePage( "incidentForm.html");
+		   };
+	                  
+		};
+	
+	ko.applyBindings(new ViewModel(), this);
+	setOnlineStatus();
+
+});	  		
