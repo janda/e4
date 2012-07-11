@@ -20,7 +20,12 @@ function createNewEvent() {
 	var incident = new Incident();
 			
 	setCurrentIncident(incident);
-	$.mobile.changePage( "incidentForm.html");
+	
+	//TODO: Can we reuse the same footer everywhere?
+	//$footer = $('#footer');
+	//$footer.detach();   	
+	//$footer.appendTo("incidentForm.html");
+	//$.mobile.changePage( "incidentForm.html");
 	
 }
 
@@ -64,6 +69,22 @@ function loadTestData() {
 	incident.incId = "1";
 	incident.eventNumber = "Testing1234";
 	incident.title = "Testing title";
+	
+	var subjects = new Array();
+	
+	var subject = new Object();
+	subject.fname = "Subject1 - fname";
+	subject.lname = "Subject1 - lname";
+	subject.gender = "M";
+	subjects.push(subject);
+	
+	var subject1 = new Object();
+	subject1.fname = "Subject2 - fname";
+	subject1.lname = "Subject2 - lname";
+	subject1.gender = "F";
+	subjects.push(subject1);
+	
+	incident.subjects = subjects;
 	
 	incidents.push(incident);
 	

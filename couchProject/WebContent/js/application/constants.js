@@ -21,6 +21,12 @@ var INCIDENTS_LIST_KEY = "INC_LIST_KEY";
  */
 g_curIncident = null;
 
+/** 
+ * Current subject open for editing in the application.
+ * @global
+ */
+g_curSubject = null;
+
 /**
  * Obtain an incident object from the local storage object
  * by searching on the incident ID (incId).
@@ -110,6 +116,12 @@ function setOnlineStatus() {
 		$("#statusIndicator").attr("src","../icons/online.png");
 	} else {
 		$("#statusIndicator").attr("src","../icons/offline.png");
+	}
+	
+	if(navigator.onLine) {
+		$("#statusIndicatora").attr("src","../icons/online.png");
+	} else {
+		$("#statusIndicatora").attr("src","../icons/offline.png");
 	}
 	
 	/*window.addEventListener("online", function() {
