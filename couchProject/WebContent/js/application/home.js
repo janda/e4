@@ -73,12 +73,14 @@ function loadTestData() {
 	var subjects = new Array();
 	
 	var subject = new Object();
+	subject.civId = "1";
 	subject.fname = "Subject1 - fname";
 	subject.lname = "Subject1 - lname";
 	subject.gender = "M";
 	subjects.push(subject);
 	
 	var subject1 = new Object();
+	subject1.civId = "2";
 	subject1.fname = "Subject2 - fname";
 	subject1.lname = "Subject2 - lname";
 	subject1.gender = "F";

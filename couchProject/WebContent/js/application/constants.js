@@ -72,7 +72,6 @@ function setCurrentIncident(incident) {
 
 /**
  * Save the current incident to local storage.
- * @param incident to save
  */
 function saveCurIncident() {
 
@@ -107,6 +106,41 @@ function saveCurIncident() {
 }
 
 /**
+ * Save the current subject to local storage.
+ */
+function saveCurSubject() {
+
+	if(!g_curIncident) return; //TODO: Throw an exception here?
+	
+	if(!g_curSubject) return; //TODO: Throw an exception here?
+	
+	var subjects = g_curIncident.subjects;
+	var len = 0;
+	
+	if(subjects) {
+		len = subjects.length;
+	} else {
+		subjects = new Array();
+	}
+	
+	var civId = g_curSubject.civId;
+	
+	for(var i=0; i<len; i++) {
+		if(civId == subjects[i].civId) {
+			subjects[i] = g_curSubject;
+			saveCurIncident();
+			return;
+		}
+	}
+	
+	//add new subject
+	subjects.push(g_curSubject);
+	saveCurIncident();
+	return;
+	
+}
+
+/**
  * Select the correct icon to display based
  * on the current online/offline status.
  */
@@ -124,11 +158,11 @@ function setOnlineStatus() {
 		$("#statusIndicatora").attr("src","../icons/offline.png");
 	}
 	
-	/*window.addEventListener("online", function() {
+	window.addEventListener("online", function() {
 		$("#statusIndicator").attr("src","../icons/online.png");
 	}, true);
 		 
 	window.addEventListener("offline", function() {
 		$("#statusIndicator").attr("src","../icons/offline.png");
-	}, true);*/
+	}, true);
 }
