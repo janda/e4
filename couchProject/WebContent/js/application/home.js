@@ -22,10 +22,10 @@ function createNewEvent() {
 	setCurrentIncident(incident);
 	
 	//TODO: Can we reuse the same footer everywhere?
-	//$footer = $('#footer');
-	//$footer.detach();   	
-	//$footer.appendTo("incidentForm.html");
-	//$.mobile.changePage( "incidentForm.html");
+	$footer = $('#footer');
+	$footer.detach();   	
+	$footer.appendTo("incidentForm.html");
+	$.mobile.changePage( "incidentForm.html");
 	
 }
 

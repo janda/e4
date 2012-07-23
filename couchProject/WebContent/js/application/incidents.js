@@ -9,12 +9,8 @@ $("#incidentListPage").live("pagebeforeshow", function() {
 		   
 		   self.goToIncident = function(incident) {
 			   setCurrentIncident(incident);
-			   
-			   $footer = $('#footer');
-			   $footer.detach();
-			   $footer.appendTo("incidentForm.html");
-			   $.mobile.changePage( "incidentForm.html");
-			   
+
+			   $.mobile.changePage( "incidentForm.html");			   
 			   
 		   };
 	                  

@@ -1,16 +1,53 @@
 $("#subjectPage").live("pageinit", function() {
 	
-	//setOnlineStatus();
-	setSubjectVals();
+	$("#subjects").change(function() {
+		changeSubj(this.value);
+	});
+	
+	setOnlineStatus(); //determine current network connectivity.
+	setSubjectVals(); //populate initial values.
+	setSubjSelect(); //setup the subject select box.
 	
 });
 
-function changeSubj() {
+/**
+ * Change the current subject via the subject select box.
+ */
+function changeSubj(civId) {
+	
+	saveSubject(false);
+	
+	g_curSubject = getSubjFromCurIncByCivId(civId);
+	
+	setSubjectVals();
+	setSubjSelect();
+}
+
+/**
+ * Add a new subject to the event and ready for data entry.
+ */
+function addSubj() {
+	
+	saveSubject(false);
+	
+	g_curSubject = new Object();
+	g_curSubject.civId = uniqid(); //new subject ID:
+	
+	g_curIncident.subjects.push(g_curSubject); //add subject to incident.
+	
+	setSubjectVals();
+	setSubjSelect();
 	
 }
 
-function setSubjectVals() {
-		
+/**
+ * Populates the select box that contains all the subjects
+ * in the current incident.
+ */
+function setSubjSelect() {
+	
+	$('#subjects').empty();
+	
 	var subjects = g_curIncident.subjects;
 	var len = 0;
 	
@@ -22,7 +59,7 @@ function setSubjectVals() {
 		for(i=0;i<len;i++) {
 			
 			var subject = subjects[i];
-			var subjectName = subject.lname + ", " + subject.fname;
+			var subjectName = (!subject.fname)?"":subject.lname + ", " + subject.fname;
 			
 			$('#subjects')
 	          .append($('<option>', { value : subject.civId })
@@ -38,8 +75,26 @@ function setSubjectVals() {
 		
 	}
 	
-	if(g_curSubject == null) { //start with first subject.
-		g_curSubject = g_curIncident.subjects[0];	
+}
+
+/**
+ * Function transfers data from the subject object to the fields on the form.
+ */
+function setSubjectVals() {			
+	
+	if(g_curSubject == null) { //no current subject defined.
+		
+		if(g_curIncident.subjects) {//start with first subject.
+			
+			g_curSubject = g_curIncident.subjects[0];
+			
+		} else { //This is the very first subject for a new event.
+			g_curSubject = new Object();
+			g_curSubject.civId = uniqid(); //new subject ID:
+			g_curIncident.subjects = new Array();
+			g_curIncident.subjects.push(g_curSubject);
+		}
+			
 	}
 
 	$("#lname").val(g_curSubject.lname);
@@ -50,23 +105,28 @@ function setSubjectVals() {
 		$("#radio-male").attr('checked', true).checkboxradio("refresh");
 	} else if(gender == "F") {
 		$("#radio-female").attr('checked', true).checkboxradio("refresh");
+	} else {
+		$("#radio-male").attr('checked', false).checkboxradio("refresh");	
+		$("#radio-female").attr('checked', false).checkboxradio("refresh");
 	}
 	
 }
 
-//use for new subject ID:
-//uniqid()
-
 /**
  * Transfer values from page to in-memory object and
  * save subject to local storage.
+ * 
+ * @param alertSave boolean indicates if an alert message should appear after saving.
  */
-function saveSubject() {
+function saveSubject(alertSave) {
 	
 	g_curSubject.lname = $("#lname").val();
 	g_curSubject.fname = $("#fname").val();
 	g_curSubject.gender = $('input:radio[name=gender]:checked').val();
 	
 	saveCurSubject();
-	alert("Save Completed.");
+	setSubjSelect();
+	
+	if(alertSave) alert("Save Completed.");
+	
 }

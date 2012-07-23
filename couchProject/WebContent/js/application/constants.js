@@ -9,12 +9,6 @@
  */
 var INCIDENTS_LIST_KEY = "INC_LIST_KEY";
 
-/**
- * In-memory representation of an array of all incidents.
- * @global
- */
-//g_incidents = null;
-
 /** 
  * Current incident open for editing in the application.
  * @global
@@ -113,20 +107,17 @@ function saveCurSubject() {
 	if(!g_curIncident) return; //TODO: Throw an exception here?
 	
 	if(!g_curSubject) return; //TODO: Throw an exception here?
-	
-	var subjects = g_curIncident.subjects;
-	var len = 0;
-	
-	if(subjects) {
-		len = subjects.length;
-	} else {
-		subjects = new Array();
+		
+	if(!g_curIncident.subjects) {		
+		g_curIncident.subjects = new Array();
 	}
 	
+	var subjects = g_curIncident.subjects;
+	var len = subjects.length;
 	var civId = g_curSubject.civId;
 	
 	for(var i=0; i<len; i++) {
-		if(civId == subjects[i].civId) {
+		if(civId == subjects[i].civId) { //found subject in the incident, so save.
 			subjects[i] = g_curSubject;
 			saveCurIncident();
 			return;
@@ -137,6 +128,32 @@ function saveCurSubject() {
 	subjects.push(g_curSubject);
 	saveCurIncident();
 	return;
+	
+}
+
+/**
+ * Find the subject in the current incident
+ * for the given civId. 
+ * @param civId
+ */
+function getSubjFromCurIncByCivId(civId) {
+	
+	if(!g_curIncident) return; //TODO: Throw an exception here?
+	
+	var subjects = g_curIncident.subjects;
+	var len = 0;
+	
+	if(subjects) {
+		len = subjects.length;
+	} else {
+		subjects = new Array();
+	}
+	
+	for(var i=0; i<len; i++) {
+		if(civId == subjects[i].civId) {
+			return subjects[i];
+		}
+	}
 	
 }
 
