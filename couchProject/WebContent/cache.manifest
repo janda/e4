@@ -18,6 +18,11 @@ js/jquery-mobile-1.1.0/jquery.mobile-1.1.0.min.js
 js/jstorage/jstorage.min.js
 js/knockout/knockout-2.1.0.js
 
+#jQuery icons
+js/jquery-mobile-1.1.0/images/ajax-loader.png
+js/jquery-mobile-1.1.0/images/icons-18-black.png
+js/jquery-mobile-1.1.0/images/icons-18-white.png
+
 #Application scripts:
 js/application/home.js
 js/application/constants.js
