@@ -9,9 +9,8 @@ $("#incidentListPage").live("pagebeforeshow", function() {
 		   
 		   self.goToIncident = function(incident) {
 			   setCurrentIncident(incident);
-
-			   $.mobile.changePage( "incidentForm.html");			   
-			   
+			   g_curSubject = null;
+			   $.mobile.changePage( "incidentForm.html");
 		   };
 	                  
 		};

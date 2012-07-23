@@ -115,7 +115,9 @@ function setSubjectVals() {
 	var gender = g_curSubject.gender;
 	if(gender == "M") {
 		$("#radio-male").attr('checked', true).checkboxradio("refresh");
+		$("#radio-female").attr('checked', false).checkboxradio("refresh");
 	} else if(gender == "F") {
+		$("#radio-male").attr('checked', false).checkboxradio("refresh");
 		$("#radio-female").attr('checked', true).checkboxradio("refresh");
 	} else {
 		$("#radio-male").attr('checked', false).checkboxradio("refresh");	
@@ -134,7 +136,12 @@ function saveSubject(alertSave) {
 	
 	g_curSubject.lname = $("#lname").val();
 	g_curSubject.fname = $("#fname").val();
-	g_curSubject.gender = $('input:radio[name=gender]:checked').val();
+
+	if($("#radio-male").attr('checked')) {
+		g_curSubject.gender = "M";
+	} else if($("#radio-female").attr('checked')) {
+		g_curSubject.gender = "F";
+	}
 	
 	saveCurSubject();
 	setSubjSelect();
