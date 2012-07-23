@@ -11,6 +11,18 @@ $("#subjectPage").live("pageinit", function() {
 });
 
 /**
+ * Delete a subject from the event.
+ */
+function delSubj() {
+	
+	delCurrentSubject();
+	
+	setSubjectVals();
+	setSubjSelect();
+	
+}
+
+/**
  * Change the current subject via the subject select box.
  */
 function changeSubj(civId) {

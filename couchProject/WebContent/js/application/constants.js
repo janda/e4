@@ -100,6 +100,36 @@ function saveCurIncident() {
 }
 
 /**
+ * Delete the current subject to local storage.
+ */
+function delCurrentSubject() {
+
+	if(!g_curIncident) return; //TODO: Throw an exception here?
+	
+	if(!g_curSubject) return; //TODO: Throw an exception here?
+		
+	if(!g_curIncident.subjects) {
+		g_curSubject = null;
+		return; //subject was never saved
+	}
+	
+	var subjects = g_curIncident.subjects;
+	var len = subjects.length;
+	var civId = g_curSubject.civId;
+	
+	for(var i=0; i<len; i++) {
+		if(civId == subjects[i].civId) { //found subject in the incident.			
+			g_curIncident.subjects.splice(i,1); //remove the subject from the array.
+			g_curSubject = null;
+			break;
+		}
+	}
+	
+	saveCurIncident(); //save the changes.
+	
+}
+
+/**
  * Save the current subject to local storage.
  */
 function saveCurSubject() {
