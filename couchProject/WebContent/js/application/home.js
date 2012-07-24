@@ -5,10 +5,12 @@
 //    localStorage - stores data with no expiration date
 //    sessionStorage - stores data for one session
 
-$( document ).delegate("#homePage", "pageinit", function() {		
-		
-	setOnlineStatus();	
-	  		
+$( document ).delegate("#homePage", "pageinit", function() {
+	logCacheEvents();
+	$(document.body).bind("online", checkNetworkStatus);
+	$(document.body).bind("offline", checkNetworkStatus);
+	checkNetworkStatus();
+	//setOnlineStatus();	
 });	
 
 /**
@@ -20,11 +22,7 @@ function createNewEvent() {
 	var incident = new Incident();
 			
 	setCurrentIncident(incident);
-	
-	//TODO: Can we reuse the same footer everywhere?
-	$footer = $('#footer');
-	$footer.detach();   	
-	$footer.appendTo("incidentForm.html");
+
 	$.mobile.changePage( "incidentForm.html");
 	
 }
@@ -36,7 +34,7 @@ function createNewEvent() {
 function Incident() {
 	this.type = "incident";
 	this.incId = uniqid();
-	this.eventNumber = "NEW_INC_1234";
+	this.eventNumber = "NEW_" + uniqid();
 	this.title = "";
 }
 

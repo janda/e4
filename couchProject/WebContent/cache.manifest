@@ -3,7 +3,7 @@ CACHE MANIFEST
 # Revision number change will force local application
 # cache to refresh when no other changes to this manifest
 # are found by the web server.
-# REV 3
+# REV 1
 ################################################################
 
 CACHE:
@@ -29,6 +29,8 @@ js/application/constants.js
 js/application/incidents.js
 js/application/incidentForm.js	
 js/application/subjectForm.js		
+js/application/network.js	
+js/application/cacheMgmt.js	
 
 #CSS files
 js/jquery-mobile-1.1.0/jquery.mobile-1.1.0.min.css
@@ -45,3 +47,7 @@ icons/online.png
 
 FALLBACK:
 / html/offline_na.html
+
+NETWORK:
+#Pages that will never be cached.
+js/application/ping.json

@@ -3,47 +3,50 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Home Page</title>
-	
-	<meta name="viewport" content="width=device-width, initial-scale=1"> 
-	<link rel="stylesheet" href="../js/jquery-mobile-1.1.0/jquery.mobile-1.1.0.min.css" />
-	<script src="../js/jquery-1.7.1/jquery-1.7.1.min.js"></script>
-	<script src="../js/jquery-mobile-1.1.0/jquery.mobile-1.1.0.min.js"></script>	
-	<script src="../js/jstorage/jstorage.min.js"></script>
-	<script src="../js/knockout/knockout-2.1.0.js"></script>	
-	<script src="../js/application/home.js"></script>
-	<script src="../js/application/incidents.js"></script>
-	<script src="../js/application/constants.js"></script>			
-	<script src="../js/application/incidentForm.js"></script>
-	<script src="../js/application/subjectForm.js"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="../js/jquery-mobile-1.1.0/jquery.mobile-1.1.0.min.css" />
+<script src="../js/jquery-1.7.1/jquery-1.7.1.min.js"></script>
+<script src="../js/jquery-mobile-1.1.0/jquery.mobile-1.1.0.min.js"></script>
+<script src="../js/jstorage/jstorage.min.js"></script>
+<script src="../js/knockout/knockout-2.1.0.js"></script>
+<script src="../js/application/home.js"></script>
+<script src="../js/application/incidents.js"></script>
+<script src="../js/application/constants.js"></script>
+<script src="../js/application/incidentForm.js"></script>
+<script src="../js/application/subjectForm.js"></script>
+<script src="../js/application/network.js"></script>
+<script src="../js/application/cacheMgmt.js"></script>
 </head>
 <body>
 
 	<div data-role="page" id="homePage">
 
-	<div data-role="header" data-id="header" data-position="fixed" id="header">
-		<h1>Home Page</h1>
-	</div>
-	
-	<div data-role="content">
-		<a href="#" data-role="button" onclick="createNewEvent();">Add Event</a>
-		<a href="incidents.html" data-role="button" data-prefetch>Update Event</a>
-		<a href="#" data-role="button" onclick="alert('Patience please.');">Synchronize</a>
-		<a href="#" data-role="button" onclick="alert('Not implemented yet.');">Settings</a>
-		<a href="#" data-role="button" onclick="loadTestData();">Load Test Data</a>
-	</div>
+		<div data-role="header" data-id="header" data-position="fixed"
+			id="header">
+			<h1>Home Page</h1>
+		</div>
 
-	<div data-role="footer" data-id="footer" data-position="fixed" id="footer">
-		<div class="ui-grid-a">
-			<div class="ui-block-a">
+		<div data-role="content">
+			<a href="#" data-role="button" onclick="createNewEvent();">Add
+				Event</a> <a href="incidents.html" data-role="button" data-prefetch>Update
+				Event</a> <a href="#" data-role="button"
+				onclick="alert('Patience please.');">Synchronize</a> <a href="#"
+				data-role="button" onclick="alert('Not implemented yet.');">Settings</a>
+			<a href="#" data-role="button" onclick="loadTestData();">Load
+				Test Data</a>
+		</div>
+		<div data-role="footer" data-id="footer" class="ui-bar"
+			data-position="fixed">
+			<div data-role="controlgroup" data-type="horizontal">
 				<a href="home.html" data-role="button" data-icon="home">Home</a>
 			</div>
-			<div class="ui-block-b">
-				<img src="#" id="statusIndicator" align="right"/>
-			</div>
-		</div>		
-	</div><!-- /footer -->
+		</div>
+		<!-- /footer -->
 
-	</div><!-- /page -->
+	</div>
+	<!-- /page -->
 
 </body>
 </html>
