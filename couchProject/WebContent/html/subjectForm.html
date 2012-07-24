@@ -49,17 +49,12 @@
     </fieldset>
     </div>
 </form>
-	<div data-role="footer" data-id="footer" data-position="fixed">
-		<div class="ui-grid-a">
-			<div class="ui-block-a">
-				<a href="home.html" data-role="button" data-icon="home">Home</a>			
-				<a href="#" data-role="button" data-icon="plus" onclick="addSubj();">New Subject</a>
-				<a href="#" data-role="button" data-icon="delete" onclick="delSubj();">Delete</a>		
-			</div>
-			<div class="ui-block-b">
-				<img id="statusIndicator" align="right"/>
-			</div>
-		</div>		
+	<div data-role="footer" data-id="footer" class="ui-bar" data-position="fixed">
+		<div data-role="controlgroup" data-type="horizontal">
+			<a href="home.html" data-role="button" data-icon="home">Home</a>			
+			<a href="#" data-role="button" data-icon="plus" onclick="addSubj();">New</a>
+			<a href="#" data-role="button" data-icon="delete" onclick="delSubj();">Delete</a>
+		</div>				
 	</div><!-- /footer -->
 </div>
 </body>
