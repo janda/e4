@@ -40,6 +40,7 @@ html/home.html
 html/incidents.html
 html/incidentForm.html
 html/subjectForm.html
+html/defaults.html
 
 #Icons
 icons/offline.png
