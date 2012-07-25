@@ -10,7 +10,7 @@ $( document ).delegate("#homePage", "pageinit", function() {
 	$(document.body).bind("online", checkNetworkStatus);
 	$(document.body).bind("offline", checkNetworkStatus);
 	checkNetworkStatus();
-	//setOnlineStatus();	
+	setCurrentPos(); //set the current lat/lon
 });	
 
 /**
@@ -22,7 +22,7 @@ function createNewEvent() {
 	var incident = new Incident();
 			
 	setCurrentIncident(incident);
-
+	
 	$.mobile.changePage( "incidentForm.html");
 	
 }
@@ -36,6 +36,7 @@ function Incident() {
 	this.incId = uniqid();
 	this.eventNumber = "NEW_" + uniqid();
 	this.title = "";
+	this.status = "NEW";
 }
 
 /**

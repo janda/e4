@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+	<script type="text/javascript">
+	
+		function clickMe() {
+
+			if (navigator.geolocation) {
+				console.log("Checking for geolocation.");
+				navigator.geolocation.getCurrentPosition(showPosition, logError);				
+		    } else {
+		    	console.log("Geolocation is not supported.");
+		    }
+
+		}
+		
+		function showPosition(position) {
+			
+		  	console.log("Lat = " + position.coords.latitude);
+		  	console.log("Lon = " + position.coords.longitude);
+		  
+	  	}
+		
+		function logError(error) {
+		  switch(error.code) {
+		    case error.PERMISSION_DENIED:
+		    	console.log("User denied the request for Geolocation.");
+		      break;
+		    case error.POSITION_UNAVAILABLE:
+		    	console.log("Location information is unavailable.");
+		      break;
+		    case error.TIMEOUT:
+		    	console.log("The request to get user location timed out.");
+		      break;
+		    case error.UNKNOWN_ERROR:
+		    	console.log("An unknown error occurred.");
+		      break;
+		    }
+		  }
+	
+	</script>
+
+</head>
+<body>
+	<input type="button" onclick="clickMe();" value="Click"/>
+</body>
+</html>

@@ -22,6 +22,16 @@ g_curIncident = null;
 g_curSubject = null;
 
 /**
+ * Current latitude of the device.
+ */
+g_current_lat = null;
+
+/**
+ * Current longitude of the device.
+ */
+g_current_lon = null;
+
+/**
  * Obtain an incident object from the local storage object
  * by searching on the incident ID (incId).
  * @param incId
@@ -80,6 +90,7 @@ function saveCurIncident() {
 	}
 	
 	var incId = g_curIncident.incId;
+	g_curIncident.status = "SAVED";
 	
 	if(len != 0) {
 		//find and replace incident.
@@ -92,7 +103,7 @@ function saveCurIncident() {
 		}
 	}
 		
-	//add new incident.
+	//add new incident.	
 	incidents.push(g_curIncident);
 	$.jStorage.set(INCIDENTS_LIST_KEY, incidents);
 	return;

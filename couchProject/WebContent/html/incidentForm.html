@@ -16,8 +16,8 @@
 			
 			<div data-role="navbar">
 				<ul>
-					<li><a href="#" class="ui-btn-active" data-transition="slide">Event Info</a></li>
-					<li><a href="subjectForm.html" data-transition="slide" data-prefetch>Subjects</a></li>
+					<li><a href="#" class="ui-btn-active">Event</a></li>
+					<li><a href="subjectForm.html" data-prefetch>Subjects</a></li>
 				</ul>
 			</div><!-- /navbar -->
 
@@ -26,27 +26,27 @@
 		<div data-role="content">
 			<form action="#" method="post">
 				<div style="margin-left:auto; margin-right:auto; font-weight: bold;">
-					<span style="text-align: center;" data-bind="text: eventNumber"></span>
+					<span style="text-align: center;" id="eventNumber"></span>
 				</div>
 				<div data-role="fieldcontain">
 					<label for="title">Event Title:</label>
-					<input type="text" name="title" id="title" data-bind="value: eventTitle" />
+					<input type="text" name="title" id="title"/>
 				</div>
 				<div data-role="fieldcontain">
 					<label for="arsLat">Lat:</label>
-					<input type="text" name="arsLat" id="arsLat" maxlength="10" data-bind="value: arsLat"/>
+					<input type="text" name="arsLat" id="arsLat" maxlength="10"/>
 				</div>
 				<div data-role="fieldcontain">
 					<label for="arsLon">Lon:</label>
-					<input type="text" name="arsLon" id="arsLon" maxlength="10" data-bind="value: arsLon" />
+					<input type="text" name="arsLon" id="arsLon" maxlength="10"/>
 				</div>
 				<div data-role="fieldcontain">
 					<label for="arsDt">Arrest Date:</label>
-					<input type="date" name="arsDt" id="arsDt" maxlength="10" data-bind="value: arsDt"/>			
+					<input type="date" name="arsDt" id="arsDt" maxlength="10"/>			
 				</div>
 				<div data-role="fieldcontain">
 					<label for="arsTm">Arrest Time:</label>
-					<input type="time" name="arsTm" id="arsTm" maxlength="4" data-bind="value: arsTm"/>			
+					<input type="time" name="arsTm" id="arsTm" maxlength="4"/>			
 				</div>				
 			</form>
 			

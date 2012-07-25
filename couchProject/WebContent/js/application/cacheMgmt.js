@@ -10,7 +10,7 @@ function logCacheEvents() {
         console.log("All resources for this web app have now been downloaded.");
     }, false);
     cache.addEventListener("checking", function () {
-        console.log("Checking manifest");
+        console.log("Checking manifest.");
     }, false);
     cache.addEventListener("downloading", function () {
         console.log("Starting download of cache files.");
@@ -24,12 +24,9 @@ function logCacheEvents() {
     cache.addEventListener("progress", function () {
         console.log("Downloading cached files.");
     }, false);
-    cache.addEventListener("updateready", function () {
-        //cache.swapCache();
+    cache.addEventListener("updateready", function () {        
         console.log("Updated cache is ready.");
-        // Even after swapping the cache the currently loaded page won't use it
-        // until it is reloaded, so force a reload so it is current.
-        window.location.reload(true);
-        console.log("Window reloaded.");
-    }, false);	
+        window.location.reload(true); //reload to force using the new cache
+    }, false);
+    
 }
